@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/e2025c9e-6580-4777-a147-fe36c4b6889f/resourceGroups/jmarks-OutlookPlugin/providers/Microsoft.Web/sites/UiPathOutlook",
+    "appService.deploySubpath": ""
+}
