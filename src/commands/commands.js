@@ -5,7 +5,7 @@
  
 Office.onReady(info => {
   // Initialize the robot
-  UiPathRobot.init(1000);
+  // UiPathRobot.init();
 
   // If needed, Office.js is ready to be called
 });
@@ -23,7 +23,7 @@ function action(event) {
   var attachments = item.attachments;
   if (attachments.length > 0) {
     attachments.forEach(async function (attachment) {
-      DisplayMessage("Saving " + attachment.name);
+      DisplayMessage("Downloading invoice " + attachment.name);
       item.getAttachmentContentAsync(attachment.id, handleAttachmentsCallback);
     });
   }
@@ -35,19 +35,14 @@ function action(event) {
 } 
 
 async function handleAttachmentsCallback(result) {
-  DisplayMessage("start callback");
   // Parse string to be a url, an .eml file, a base64-encoded string, or an .icalendar file.
   switch (result.value.format) {
     case Office.MailboxEnums.AttachmentContentFormat.Base64:
-      /*DisplayMessage("here " + result.value);
-
-      fs.writeFile(fileName, result.value, () => {
+      /*fs.writeFile(fileName, result.value, () => {
         DisplayMessage(result.name + " stored");
-      });
-      DisplayMessage("done");*/
-      DisplayMessage("Invoice downloaded for analysis.");
+      });*/
+      DisplayMessage("Invoice downloaded.  Invoking robot to analyze invoice...");
 
-      DisplayMessage("Invoking robot...");
       // Run Process, passing argument in to folder
       UiPathRobot.runProcess(processId, arguments, (status) => {
         DisplayMessage(status);
