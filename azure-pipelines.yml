@@ -26,6 +26,7 @@ steps:
       **\*.map
       **\*.js
       **\*.map
+      dist\**\*
       manifest.xml
       package.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
@@ -39,3 +40,11 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
   displayName: 'Archiving Files'
+
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  displayName: 'Publishing'
