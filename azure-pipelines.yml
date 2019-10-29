@@ -21,7 +21,7 @@ steps:
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
-      **\*
+      **
       manifest.xml
       package.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
