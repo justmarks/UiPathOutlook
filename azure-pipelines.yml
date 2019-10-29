@@ -19,3 +19,12 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- script: |
+    npm install webpack webpack-cli --save-dev
+    npx webpack --config webpack.config.js
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)'
+
