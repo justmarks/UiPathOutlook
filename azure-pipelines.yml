@@ -21,12 +21,7 @@ steps:
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
-      **\*.png
-      **\*.ico
-      **\*.map
-      **\*.js
-      **\*.map
-      dist\**\*
+      **\*
       manifest.xml
       package.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
