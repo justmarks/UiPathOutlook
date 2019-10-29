@@ -20,11 +20,11 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- script: |
-    npm install webpack webpack-cli --save-dev
-    npx webpack --config webpack.config.js
-
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
