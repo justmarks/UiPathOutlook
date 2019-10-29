@@ -27,6 +27,7 @@ steps:
       manifest.xml
       package.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copying files'
 
 - task: ArchiveFiles@2
   inputs:
@@ -35,4 +36,4 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
-
+  displayName: 'Archiving Files'
