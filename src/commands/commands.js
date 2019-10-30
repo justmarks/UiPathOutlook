@@ -8,6 +8,9 @@ Office.onReady(info => {
   // UiPathRobot.init();
 
   // If needed, Office.js is ready to be called
+
+   //Find the right process
+   processId = GetProcessByName(processName);
 });
 
 /**
@@ -80,13 +83,13 @@ function DisplayMessage(messageText) {
 function GetProcessByName(processName) {
   UiPathRobot.getRobotProcesses().then((processes) => {
     for (var i=0; i<processes.length; i++) {
+      console.log(processes[i].name.toLowerCase());
       if (processes[i].name.toLowerCase().startsWith(processName.toLowerCase())) {
+        console.log("found");
         return processes[i].id;
       }
     }
   });
-  
-  throw  "Process " + processName + " not found!";
 }
   
 
@@ -96,6 +99,6 @@ const g = getGlobal();
 g.action = action;
 
 var localFolder = "Invoices";
+var processId = "";
 
-const processName = "Relocation_invoice_processing";
-const processId = "41cc2677-ebc5-46b9-bbc7-1f1ebb16d831";
+const processName = "relocation_invoice_processing";
