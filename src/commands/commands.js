@@ -77,6 +77,19 @@ function DisplayMessage(messageText) {
   console.log(messageText);
 }
 
+function GetProcessByName(processName) {
+  UiPathRobot.getRobotProcesses().then((processes) => {
+    for (var i=0; i<processes.length; i++) {
+      if (processes[i].name.toLowerCase().startsWith(processName.toLowerCase())) {
+        return processes[i].id;
+      }
+    }
+  });
+  
+  throw  "Process " + processName + " not found!";
+}
+  
+
 const g = getGlobal();
 
 // the add-in command functions need to be available in global scope
@@ -84,5 +97,5 @@ g.action = action;
 
 var localFolder = "Invoices";
 
-const processName = "Relocation_invoice_processing_DemoEnvironment";
+const processName = "Relocation_invoice_processing";
 const processId = "41cc2677-ebc5-46b9-bbc7-1f1ebb16d831";
